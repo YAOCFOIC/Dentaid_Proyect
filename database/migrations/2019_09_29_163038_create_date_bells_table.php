@@ -17,6 +17,7 @@ class CreateDateBellsTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name');
+            $table->boolean('active');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->timestamps();

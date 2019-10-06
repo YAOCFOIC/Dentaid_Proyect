@@ -66,13 +66,19 @@
                             </div>
 
                             <div class="col-md-6 offset-md-4 mt-3">
-                                <a href="{{url('/auth/google')}}" class="btn btn-danger"><i class="fa fa-google"></i> Google</a>
-                            
                                 
-                                <a href="{{url('/auth/facebook')}}" class="btn btn-primary">Facebook</a>
+                            
+                                 <a href="{{url('/auth/facebook')}}" >
+                                    <img src="{{asset('image/facebook.png')}}" alt="" id="facebook">
+                                </a>
+                                <img src="" alt="">
+                                <a href="{{url('/auth/google')}}" >
+                                    <img src="{{asset('image/google.png')}}" alt="" id="google">
+                                </a>
+                               
                                 @if (Route::has('register'))
                                     
-                                        <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                    
                                 @endif
                             </div>

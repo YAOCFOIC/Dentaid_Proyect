@@ -17,6 +17,13 @@ class CreateDateActivitiesTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string("ansewer");
+            $table->string("questions");
+            $table->string('OptionA');
+            $table->string('OptionB');
+            $table->string('OptionC');
+            $table->string('OptionD');
+            $table->boolean('active');
+            $table->Integer("time");
             $table->unsignedBigInteger('bells_id');
             $table->foreign('bells_id')->references('id')->on('bells');
             $table->timestamps();

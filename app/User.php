@@ -36,4 +36,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function result()
+    {
+        return $this->hasMany('App\Result','id','id');
+    }
+
+    
 }

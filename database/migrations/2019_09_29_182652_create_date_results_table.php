@@ -16,6 +16,7 @@ class CreateDateResultsTable extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->string('response');
             $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('activities_id');
             $table->Integer('Points');
