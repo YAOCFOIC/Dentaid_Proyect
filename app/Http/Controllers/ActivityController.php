@@ -23,14 +23,11 @@ class ActivityController extends Controller
 
     public function index2()
     {
-        // $TotalR= Result::with([
-        //     'Result:id,SUM(Point)',
-        //     'user:id'
-        // ])->where('Result:id');
+        
         // $Result = Result::with([
         //     'user:id,name'
         // ])->where('Point');
-        // return view('home',compact('$Result'));
+        return view('home',compact('$Result'));
     }
     /**
      * Show the form for creating a new resource.
@@ -45,8 +42,7 @@ class ActivityController extends Controller
                      ->groupBy('active')
                      ->where('active', '=', 1)
                      ->get();
-        echo $dayActivity;
-        exit();
+       
 
         $response = $request->input('customRadio');
         
@@ -68,7 +64,15 @@ class ActivityController extends Controller
         $Result->Points = $Points;
         $Result->save();
 
-        return redirect()->route('home');
+        if ($Posts!=null) {
+            $Posts = Result::with([
+                            'user:id,name',   
+                            ])->get();
+             return redirect()->route('/home',compact('Posts'));
+        }else{        
+
+        return redirect()->route('/home');
+        }
     }
 
     /**
