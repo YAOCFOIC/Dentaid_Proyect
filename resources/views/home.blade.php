@@ -23,8 +23,14 @@
                         <th>Puntos</th>
                     </thead>
                     <tbody>
-                        <td></td>
-                        <td></td>
+                        @isset($scores)
+                             @foreach($scores as $score)
+                                <tr>
+                                    <td>{{ $score->user->name}}</td>
+                                    <td>{{ $score->Points}}</td>
+                                </tr>
+                            @endforeach
+                        @endisset
                     </tbody>
                 </table>
                 <div class="text-center">

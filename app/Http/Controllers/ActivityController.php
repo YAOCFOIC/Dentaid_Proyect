@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requestinput;
 use App\Activity;
+use App\User;
 use App\Result;
 use DB;
 
@@ -21,14 +22,6 @@ class ActivityController extends Controller
         return view('Activity',compact('Activitys'));
     }
 
-    public function index2()
-    {
-        
-        // $Result = Result::with([
-        //     'user:id,name'
-        // ])->where('Point');
-        return view('home',compact('$Result'));
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -36,6 +29,7 @@ class ActivityController extends Controller
      */
     public function create(Request $request)
     {
+
         $activity =  Activity::find(1);
         $dayActivity = DB::table('activities')
                      ->select(DB::raw('count(*) as user_count, active'))
@@ -63,16 +57,10 @@ class ActivityController extends Controller
         $Result->activities_id = $request->input('activity');
         $Result->Points = $Points;
         $Result->save();
-
-        if ($Posts!=null) {
-            $Posts = Result::with([
-                            'user:id,name',   
-                            ])->get();
-             return redirect()->route('/home',compact('Posts'));
-        }else{        
-
-        return redirect()->route('/home');
-        }
+       
+        
+        return redirect()->route('home');
+      
     }
 
     /**

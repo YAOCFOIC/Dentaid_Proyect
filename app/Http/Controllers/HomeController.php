@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Activity;
+use App\User;
+use App\Result;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $scores=Result::with('User:id,name')->paginate(3);   
+        
+        
+        return view('home',compact('scores'));
     }
 }
